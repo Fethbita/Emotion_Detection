@@ -62,7 +62,7 @@ def start_testing(trained_model_file):
         print(model)
         model.eval()
         while True:
-            test_sentence = input("Give a test sentence:")
+            test_sentence = input("Give a test sentence: ")
             sentence = list(parser.tokenize(test_sentence))
             input1, sent_length = get_input_vector(glove_model, sentence)
             class_pred = model(input1, sent_length)
