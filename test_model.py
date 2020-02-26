@@ -48,11 +48,11 @@ def start_testing(trained_model_file):
 
     glove_model = read_glove_vectors(dirname + "Pickle/gloveModel")
 
-    hidden_size = 512
-    num_layers = 1
+    hidden_size = 256
+    num_layers = 2
     bidirectional = False
     batchnorm = False
-    dropout_hidden = 0
+    dropout_hidden = 0.3
     dropout_output = 0.9
     model = LSTM(300, hidden_size, num_layers, bidirectional,
                  batchnorm, dropout_hidden, dropout_output).to(device)

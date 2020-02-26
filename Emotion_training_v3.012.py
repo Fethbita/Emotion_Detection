@@ -238,8 +238,8 @@ def showSaveImage(image1, image2, directory, fold, saveFile, average):
     if average:
         image2.seek(0)
         results_image = Image.open(image2)
-        results_image.save(directory + (fold if isinstance(fold, str)
-                                        else ("fold " + str(fold))), format='png')
+        results_image.save(directory + (fold + ".png" if isinstance(fold, str)
+                                        else ("fold " + str(fold) + ".png")), format='png')
         bio = BytesIO()
         results_image.save(bio, format='png')
         image2.close()
@@ -262,8 +262,8 @@ def showSaveImage(image1, image2, directory, fold, saveFile, average):
         except OSError:
             print('Error: Creating directory. ' + directory)
 
-        big_im.save(directory + (fold if isinstance(fold, str)
-                                 else ("fold " + str(fold))), format='png')
+        big_im.save(directory + (fold + ".png" if isinstance(fold, str)
+                                 else ("fold " + str(fold) + ".png")), format='png')
 
     bio = BytesIO()
     big_im.save(bio, format='png')
@@ -484,7 +484,7 @@ def train():
             minposs = testlosses.index(min(testlosses[1:])) - 1
             y_test2 = y_test.cpu()
             classification_report = metrics.classification_report(
-                y_true=y_test2, y_pred=pred, target_names=emotions, output_dict=True)
+                y_true=y_test2, y_pred=pred, target_names=emotions, output_dict=True, zero_division=0)
             test_conf_matrix = metrics.confusion_matrix(
                 y_true=y_test2, y_pred=pred)
             fold_test_classification_reports.append(
@@ -516,7 +516,7 @@ def train():
             trainlosses.append(loss.item())  # record training loss
             y_train2 = y_train2.cpu()
             classification_report = metrics.classification_report(
-                y_true=y_train2, y_pred=pred, target_names=emotions, output_dict=True)
+                y_true=y_train2, y_pred=pred, target_names=emotions, output_dict=True, zero_division=0)
             train_conf_matrix = metrics.confusion_matrix(
                 y_true=y_train2, y_pred=pred)
             fold_train_classification_reports.append(
@@ -631,12 +631,12 @@ def train():
 
 
 lrlist = [0.003]
-batchsizelist = [128]
-hdlist = [512]
-lylist = [1]
+batchsizelist = [16]
+hdlist = [256]
+lylist = [2]
 bdlist = [False]
 bnlist = [False]
-dphlist = [0.0]
+dphlist = [0.3]
 dpolist = [0.9]
 
 

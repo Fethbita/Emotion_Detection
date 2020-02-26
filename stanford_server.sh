@@ -2,7 +2,7 @@
 
 if [ ! -d stanford-corenlp-full-2018-10-05 ]; then
     wget https://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip
-    unzip stanford-corenlp-full-2018-10-05.zip
+    unzip -q stanford-corenlp-full-2018-10-05.zip
     rm stanford-corenlp-full-2018-10-05.zip
 fi
 
