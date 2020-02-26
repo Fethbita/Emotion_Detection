@@ -42,7 +42,7 @@ $ ./create_dataset_bin.py <annotation_filename> <data_filename>
 $ ./Emotion_training_v3.012.py
 ```
 
-[![Testing the network]("test screenshot.png")]()
+![Test your network]("./testscreenshot.png")
 
 > test your network (Stanford Core NLP Server needs to be running):
 ```shell
