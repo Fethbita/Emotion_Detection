@@ -12,7 +12,7 @@ from LSTM_model import LSTM
 device = torch.device("cuda:0")
 dtype = torch.float
 
-print(os.getcwd())
+
 def read_glove_vectors(glove_model_file):
     # @title Read GloVe Vectors
     print("Reading Glove Model")

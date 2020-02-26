@@ -68,16 +68,13 @@ pd.options.display.float_format = '{:.3f}'.format
 
 # https://stackoverflow.com/a/43647344
 # SET FONT FOR MATPLOTLIB
-font_dirs = [dirname + 'fonts/', ]
-font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
-font_list = font_manager.createFontList(font_files)
-font_manager.fontManager.ttflist.extend(font_list)
 plt.rcParams['font.family'] = 'Source Code Pro'
 plt.rcParams['font.weight'] = 'bold'
 plt.rcParams['axes.labelweight'] = 'bold'
 
 # SET FONT FOR PIL
-font = ImageFont.truetype(dirname + 'fonts/' + 'SourceCodePro-Black.ttf', 25)
+font = ImageFont.truetype("SourceCodePro-Black.ttf", 25)
+
 
 def fix_report(report):
     report['accuracy'] = {'f1-score': report.pop('accuracy', None)}
@@ -93,15 +90,17 @@ def report_dict_to_df(report):
     df = pd.DataFrame.from_dict(report, orient='index')
     return df
 
+
 def report_to_string(report):
     df = report_sort(report_dict_to_df(report))
     return df.to_string()
+
 
 def report_average(class_reports):
     pandas_reports = [report_dict_to_df(report) for report in class_reports]
     pd_df = report_sort(pd.concat(pandas_reports).groupby(level=0).mean())
     return pd_df.to_string()
-    
+
 
 # https://stackoverflow.com/a/35599851
 
@@ -280,7 +279,6 @@ def showSaveImage(image1, image2, directory, fold, saveFile, average):
 def ready_data(outputs, filelines):
     N = len(outputs)
 
-    vectors = []
     sent_lengths = [len(sentence) for sentence in filelines[0:N]]
     longest_sent = max(sent_lengths)
     sent_lengths = torch.from_numpy(
@@ -289,7 +287,6 @@ def ready_data(outputs, filelines):
     padded_vectors = np.zeros((longest_sent, N, 300))
     i = 0
     for line in filelines[0:N]:
-        sentence_vectors = []
         j = 0
         for word in line:
             if word in gloveModel:
@@ -490,7 +487,8 @@ def train():
                 y_true=y_test2, y_pred=pred, target_names=emotions, output_dict=True)
             test_conf_matrix = metrics.confusion_matrix(
                 y_true=y_test2, y_pred=pred)
-            fold_test_classification_reports.append(fix_report(classification_report))
+            fold_test_classification_reports.append(
+                fix_report(classification_report))
             fold_test_conf_matrices.append(test_conf_matrix)
 
             del classification_report
@@ -521,7 +519,8 @@ def train():
                 y_true=y_train2, y_pred=pred, target_names=emotions, output_dict=True)
             train_conf_matrix = metrics.confusion_matrix(
                 y_true=y_train2, y_pred=pred)
-            fold_train_classification_reports.append(fix_report(classification_report))
+            fold_train_classification_reports.append(
+                fix_report(classification_report))
             fold_train_conf_matrices.append(train_conf_matrix)
 
             del classification_report
