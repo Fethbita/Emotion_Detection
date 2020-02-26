@@ -47,8 +47,7 @@ $ ./Emotion_training_v3.012.py
 ```
 
 ![Test your network](./images/test.png)
-
 > test your network (Stanford Core NLP Server needs to be running):
 ```shell
 $ ./test_model.py <trained_model_file.pth>
-```shell
+```
