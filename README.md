@@ -19,19 +19,18 @@ $ git clone https://github.com/Fethbita/Emotion-Detection-Graduation-Project.git
 $ cd Emotion-Detection-Graduation-Project
 ```
 
-![Download and create glove bin](./images/glovescript.png)
 > download and create a pickled glove file:
 ```shell
 $ ./download_glove.sh
 ```
+![Download and create glove bin](./images/glovescript.png)
 
-![Download and run Stanford Core NLP Server](./images/corenlpserver.png)
 > download and run Stanford Core NLP Server in another terminal (downloads only once):
 ```shell
 $ ./stanford_server.sh
 ```
+![Download and run Stanford Core NLP Server](./images/corenlpserver.png)
 
-![Create your dataset binary](./images/createdatasetbin.png)
 > create your dataset with create_dataset_bin.py
 > this requires 2 files, first file is the annotation file, annotation for each sentence on the corresponding line
 > second file as the base file, one sentence per line:
@@ -39,15 +38,16 @@ $ ./stanford_server.sh
 ```shell
 $ ./create_dataset_bin.py <annotation_filename> <data_filename>
 ```
+![Create your dataset binary](./images/createdatasetbin.png)
 
-![Train your network](./images/training.png)
 > train a network, parameters can be found in the end of the file and in the beginning of the train function declaration
 ```shell
 $ ./Emotion_training_v3.012.py
 ```
+![Train your network](./images/training.png)
 
-![Test your network](./images/test.png)
 > test your network (Stanford Core NLP Server needs to be running):
 ```shell
 $ ./test_model.py <trained_model_file.pth>
 ```
+![Test your network](./images/test.png)
