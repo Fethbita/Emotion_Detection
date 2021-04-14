@@ -3,6 +3,11 @@ My graduation project from Dokuz Eylul University, 2019.
 
 It uses GloVe word vectors, data from different places to train a model that can detect emotion in English sentences.
 
+### Abstract
+People convey different kinds of emotions in daily communication. These emotions can be transferred by writing, speech, and / or gestures. This project’s primary objective is to detect and classify the emotions in written messages correctly. Several natural language processing and deep learning methods have been used for this purpose. Six different emotions (happiness, sadness, anger, disgust, surprise, fear) have been chosen for the categorization or classification process of textual messages. GloVe word vectors are given as inputs to the LSTM (Long short-term memory) based deep learning model to classify the sentences. The benchmark datasets used in this project were obtained from two different resources via Internet. We used Python programming language and various libraries for the implementation of our project and some promising results have been obtained, which can be deduced slightly more successful than the relevant studies in the literature.
+
+**Keywords**: Deep learning, emotion detection, LSTM, Word2Vec, multi-class classification
+
 ## Dependencies
 * `jre-openjdk-headless`
 * `python-pytorch-cuda`
